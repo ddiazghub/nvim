@@ -20,5 +20,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- 
--- lspconfig.pyright.setup { blabla}
+-- Enable lua setup for plugin development.
+lspconfig.lua_ls.setup {
+  settings = {
+    Lua = {
+      completion = {
+        callSnippet = "Replace"
+      }
+    }
+  }
+}

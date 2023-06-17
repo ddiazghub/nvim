@@ -7,3 +7,4 @@
 -- })
 
 require("custom.set")
+require("custom.startup")

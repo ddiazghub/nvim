@@ -52,7 +52,8 @@ M.mason = {
     "pyright",
     "mypy",
     "ruff",
-    "black"
+    "black",
+    "debugpy"
   },
 }
 
@@ -70,6 +71,18 @@ M.nvimtree = {
       },
     },
   },
+}
+
+-- Make powershell the default terminal
+M.nvterm = {
+  terminals = {
+    shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
+  }
+}
+
+-- Autocompletion mappings
+M.cmp = {
+  [""] = require("cmp").mapping.complete
 }
 
 return M
