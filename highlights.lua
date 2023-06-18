@@ -8,12 +8,31 @@ local M = {}
 M.override = {
   Comment = {
     italic = true,
+    fg = "#606060"
+  },
+  Visual = {
+    bg = "#303030"
+  },
+  IndentBlanklineContextStart = {
+    bg = "#303030"
   },
 }
 
 ---@type HLTable
 M.add = {
-  NvimTreeOpenedFolderName = { fg = "green", bold = true },
+  NvimTreeOpenedFolderName = {
+    fg = "green",
+    bold = true
+  },
+  DapBreakPoint = {
+    bg = "#660000"
+  },
+  DapStopped = {
+    bg = "#264d00"
+  },
+  DapStoppedText = {
+    fg = "green"
+  }
 }
 
 return M

@@ -6,6 +6,7 @@ M.disabled = {
   n = {
       ["<leader>h"] = "",
       ["<leader>v"] = "",
+      ["<leader>b"] = "",
   }
 }
 
@@ -34,13 +35,54 @@ M.general = {
   },
 }
 
+
+
 M.dap = {
   plugin = true,
   n = {
     ["<leader>db"] = {
-      "<cmd> DapToggleBreakpoint <CR>",
-      "toggle breakpoint"
-    }
+      function()
+        require("dap").continue()
+      end,
+      "Start debugger or continue to next breakpoint"
+    },
+    ["<leader>dt"] = {
+      function()
+        require("dap").terminate()
+      end,
+      "Terminate debugger"
+    },
+    ["<leader>dr"] = {
+      function()
+        require("dap").restart()
+      end,
+      "Restart debugger"
+    },
+    ["<leader>dl"] = {
+      function()
+        require("dap").list_breakpoints()
+      end,
+      "List breakpoints"
+    },
+    ["<leader>dc"] = {
+      function()
+        require("dap").clear_breakpoints()
+      end,
+      "Clear breakpoints"
+    },
+    ["<leader>b"] = {
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      "Toggle breakpoint"
+    },
+    ["<leader>ds"] = {
+      function()
+        local condition = vim.ui.input({ prompt = "Breakpoint condition > " })
+        require("dap").set_breakpoint(condition)
+      end,
+      "Set conditional breakpoint"
+    },
   }
 }
 
