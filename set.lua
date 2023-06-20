@@ -31,13 +31,6 @@ vim.opt.updatetime = 50
 -- No idea
 vim.opt.colorcolumn = "80"
 
--- Diagnostics will be kept in insert mode
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    update_in_insert = true,
-  }
-)
-
 -- Python provider
 vim.g.loaded_python3_provider = nil
 vim.g.python3_host_prog = os.getenv("LOCALAPPDATA") .. "\\Programs\\Python\\Python311\\python.exe"

@@ -3,6 +3,13 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 
+-- Diagnostics will be kept in insert mode
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    update_in_insert = true,
+  }
+)
+
 -- if you just want default config for the servers then put them in a table
 local servers = {
   "html",

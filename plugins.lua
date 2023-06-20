@@ -80,7 +80,7 @@ local plugins = {
     end
   },
 
-  -- Debugging
+  -- Debugging adapter protocol
   {
     "mfussenegger/nvim-dap",
     config = function()
@@ -88,6 +88,8 @@ local plugins = {
       require("core.utils").load_mappings("dap")
     end
   },
+
+  -- Debugging ui
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
@@ -97,6 +99,8 @@ local plugins = {
       require("custom.configs.dap-ui")
     end
   },
+
+  -- Python debugging
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",
@@ -106,11 +110,12 @@ local plugins = {
     },
     config = function(_, _)
       local path = os.getenv("LOCALAPPDATA") .. "\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python.exe"
-      print(path)
       require("dap-python").setup(path)
       require("core.utils").load_mappings("dap_python")
     end
   },
+
+  -- Debugging completion
   {
     "rcarriga/cmp-dap",
     dependencies = "hrsh7th/nvim-cmp",
@@ -120,6 +125,8 @@ local plugins = {
       })
     end
   },
+
+  -- Debugging virtual text
   {
     "theHamsta/nvim-dap-virtual-text",
     dependencies = "mfussenegger/nvim-dap",
