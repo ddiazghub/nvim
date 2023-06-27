@@ -64,6 +64,7 @@ local plugins = {
     end,
   },
 
+  -- Neodev
   {
     "folke/neodev.nvim",
     config = function()
@@ -77,6 +78,15 @@ local plugins = {
     lazy = false,
     config = function()
       require("custom.configs.presence")
+    end
+  },
+
+  -- Rust tools
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    config = function()
+      require("custom.configs.rust-tools")
     end
   },
 

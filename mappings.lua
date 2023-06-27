@@ -11,6 +11,7 @@ M.disabled = {
       ["<leader>ch"] = "",
       ["<leader>cc"] = "",
       ["<leader>cm"] = "",
+      ["<leader>f"] = "",
   }
 }
 
@@ -42,7 +43,7 @@ M.custom = {
     ["N"] = { "Nzzzv", "Seek next search term backwards" },
     ["<leader>c"] = { [["_c]], "Change without yanking content" },
     ["<leader>C"] = { [["_C]], "Change without yanking content" },
-    ["<leader>d"] = { [["_d]], "Delete without yanking content" },
+    ["<leader>de"] = { [["_d]], "Delete without yanking content" },
     ["<leader>D"] = { [["_D]], "Delete without yanking content" },
     ["<leader>rw"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace current word" },
     ["<C-k>"] = { "10k", "Fast scroll up" },
@@ -66,6 +67,12 @@ M.custom = {
       "Jump to current context",
     },
     ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+    ["<leader>fd"] = {
+      function()
+        vim.diagnostic.open_float { border = "rounded" }
+      end,
+      "Floating diagnostic"
+    },
   },
   i = {
     ["<C-z>"] = { "<C-o>u", "Undo" },
@@ -96,7 +103,6 @@ M.general = {
 
 -- Debugging key bindings
 M.dap = {
-  plugin = true,
   n = {
     ["<leader>db"] = {
       function()
