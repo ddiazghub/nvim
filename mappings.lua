@@ -51,6 +51,7 @@ M.custom = {
     ["<C-j>"] = { "10j", "Fast scroll down" },
     ["<C-Down>"] = { "10j", "Fast scroll down" },
     ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
+    ["<leader>ld"] = { vim.lsp.buf.type_definition, "LSP type definition" },
     ["<leader>sh"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
     ["<leader>jc"] = {
       function()
@@ -159,6 +160,19 @@ M.dap_python = {
       function()
         require("dap-python").test_method()
       end
+    }
+  }
+}
+
+-- Flutter tools, list flutter commands
+M.flutter_tools = {
+  plugin = true,
+  n = {
+    ["<leader>fc"] = {
+      function()
+        require("telescope").extensions.flutter.commands()
+      end,
+      "Flutter commands"
     }
   }
 }

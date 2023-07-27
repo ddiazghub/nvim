@@ -44,18 +44,18 @@ local function save()
   end
 end
 
-local autosave = vim.api.nvim_create_augroup("Autosave", {})
-
--- Autosave on InsertEnter
-vim.api.nvim_create_autocmd("InsertEnter", {
-  callback = save,
-  group = autosave,
-  nested = true
-})
-
--- Autosave on InsertLeave
-vim.api.nvim_create_autocmd("InsertLeave", {
-  callback = save,
-  group = autosave,
-  nested = true
-})
+-- local autosave = vim.api.nvim_create_augroup("Autosave", {})
+-- 
+-- -- Autosave on InsertEnter
+-- vim.api.nvim_create_autocmd("InsertEnter", {
+--   callback = save,
+--   group = autosave,
+--   nested = true
+-- })
+-- 
+-- -- Autosave on InsertLeave
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+--   callback = save,
+--   group = autosave,
+--   nested = true
+-- })

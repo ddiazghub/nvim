@@ -18,8 +18,10 @@ rust.setup {
       codelldb,
       lldblib
     )
+  },
+  tools = {
+    inlay_hints = {
+      auto = false
+    }
   }
 }
-
-print("Setup rust tools")
-require("rust-tools").inlay_hints.set()

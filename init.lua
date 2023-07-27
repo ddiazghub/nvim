@@ -8,3 +8,4 @@
 
 require("custom.set")
 require("custom.startup")
+require("custom.lsp-default")

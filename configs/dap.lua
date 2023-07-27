@@ -3,5 +3,4 @@ local dap = {
   dapui = require("dapui")
 }
 
-
 return dap

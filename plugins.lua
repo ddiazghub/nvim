@@ -1,5 +1,3 @@
-local overrides = require("custom.configs.overrides")
-
 ---@type NvPluginSpec[]
 local plugins = {
   -- Override plugin definition options
@@ -24,25 +22,25 @@ local plugins = {
   -- Override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = require("custom.overrides.mason")
   },
 
   -- Override treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
+    opts = require("custom.overrides.treesitter")
   },
 
   -- Override nvim-tree
   {
     "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
+    opts = require("custom.overrides.nvimtree")
   },
 
   -- Override nvterm
   {
     "NvChad/nvterm",
-    opts = overrides.nvterm,
+    opts = require("custom.overrides.nvterm")
   },
 
   -- Add completion to DAP buffers
@@ -73,11 +71,27 @@ local plugins = {
   },
 
   -- Discord presence
+  -- {
+  --   "andweeb/presence.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("custom.configs.presence")
+  --   end
+  -- },
+
+  -- Dressing
   {
-    "andweeb/presence.nvim",
-    lazy = false,
+    "stevearc/dressing.nvim",
     config = function()
-      require("custom.configs.presence")
+      require("dressing").setup()
+    end
+  },
+
+  -- Inlay hints
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    config = function()
+      require("lsp-inlayhints").setup()
     end
   },
 
@@ -87,6 +101,31 @@ local plugins = {
     ft = "rust",
     config = function()
       require("custom.configs.rust-tools")
+    end
+  },
+
+  -- Flutter tools
+  {
+    "akinsho/flutter-tools.nvim",
+    ft = "dart",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
+    },
+    config = function()
+      require("custom.configs.flutter-tools")
+    end,
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    ft = {
+      'html', 'javascript', 'typescript', 'javascriptreact', 'htmldjango',
+      'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript',
+      'xml', 'php', 'markdown', 'astro', 'glimmer', 'handlebars', 'hbs'
+    },
+    config = function()
+      require("nvim-ts-autotag").setup()
     end
   },
 
