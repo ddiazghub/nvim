@@ -8,8 +8,9 @@ local b = null_ls.builtins
 
 local sources = {
   -- webdev stuff
-  b.formatting.deno_fmt, -- JS / TS formatting
   b.formatting.prettier.with { filetypes = { "html", "htmldjango", "markdown", "css" } }, -- so prettier works only on these filetypes
+  b.formatting.rome.with { filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json", "jsonc", "yaml" } },
+  b.diagnostics.eslint_d.with {},
 
   -- Lua
   b.formatting.stylua,
@@ -31,6 +32,8 @@ local sources = {
   }),
 
   b.diagnostics.ruff.with { extra_args = { "--ignore=E501" } },
+
+
   b.formatting.black,
 
   -- rust

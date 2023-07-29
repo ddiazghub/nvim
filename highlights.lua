@@ -60,7 +60,7 @@ M.override = {
   },
 
   Identifier = {
-    fg = "#dddddd"
+    fg = "#d19a66"
   },
 
   Variable = {
@@ -68,7 +68,6 @@ M.override = {
   },
 
   ["@parameter"] = {
-    italic = true,
     fg = "#d19a66"
   },
 
@@ -81,6 +80,10 @@ M.override = {
   },
 
   ["@property"] = {
+    fg = "#d19a66"
+  },
+
+  ["@field"] = {
     fg = "#d19a66"
   },
 

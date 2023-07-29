@@ -87,6 +87,11 @@ local plugins = {
     end
   },
 
+  -- JSON and YAML schemas
+  {
+    "b0o/schemastore.nvim"
+  },
+
   -- Inlay hints
   {
     "lvimuser/lsp-inlayhints.nvim",

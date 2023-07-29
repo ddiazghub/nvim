@@ -8,7 +8,7 @@ return {
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
-    "deno",
+    "rome",
     "prettier",
 
     -- c/cpp stuff
@@ -26,5 +26,8 @@ return {
     "ruff",
     "black",
     "debugpy"
+
+    -- other
+
   },
 }
