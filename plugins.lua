@@ -46,11 +46,7 @@ local plugins = {
   -- Add completion to DAP buffers
   {
     "hrsh7th/nvim-cmp",
-    opts = {
-      enabled = function()
-        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-      end
-    }
+    opts = require("custom.overrides.cmp")
   },
 
   -- Install a plugin
@@ -67,6 +63,17 @@ local plugins = {
     "folke/neodev.nvim",
     config = function()
       require("neodev").setup({})
+    end
+  },
+
+  -- Neorg
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    ft = "norg",
+    config = function()
+      require("custom.configs.neorg")
     end
   },
 
@@ -87,6 +94,19 @@ local plugins = {
     end
   },
 
+  -- LSP saga
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = function()
+      require("custom.configs.lspsaga")
+    end
+  },
+
   -- JSON and YAML schemas
   {
     "b0o/schemastore.nvim"
@@ -104,6 +124,9 @@ local plugins = {
   {
     "simrat39/rust-tools.nvim",
     ft = "rust",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
     config = function()
       require("custom.configs.rust-tools")
     end
@@ -122,6 +145,7 @@ local plugins = {
     end,
   },
 
+  -- Automatic tag closure
   {
     "windwp/nvim-ts-autotag",
     ft = {
@@ -186,6 +210,22 @@ local plugins = {
     dependencies = "mfussenegger/nvim-dap",
     config = function()
       require("nvim-dap-virtual-text").setup()
+    end
+  },
+
+  -- Firenvim browser extension (I'm already too far deep down the rabbit hole)
+  {
+    "glacambre/firenvim",
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    lazy = false,
+    cond = not not vim.g.started_by_firenvim,
+    build = function()
+      require("lazy").load({ plugins = "firenvim", wait = true })
+      vim.fn["firenvim#install"](0)
+    end,
+    config = function()
+      require("custom.configs.firenvim")
     end
   }
 

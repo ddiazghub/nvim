@@ -6,17 +6,18 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Comment = {
-    italic = true,
-    fg = "#606060"
-  },
-
   Visual = {
-    bg = "#303030"
+    bg = "#505050"
   },
 
   IndentBlanklineContextStart = {
-    bg = "#303030"
+    bg = "#252525"
+  },
+
+  -- LSP Tokens
+  Comment = {
+    italic = true,
+    fg = "#606060"
   },
 
   Character = {
@@ -96,6 +97,10 @@ M.override = {
   },
 
   ["@function.call"] = {
+    fg = "#98c379"
+  },
+
+  ["@function.macro"] = {
     fg = "#98c379"
   },
 
@@ -206,6 +211,16 @@ M.override = {
   Typedef = {
     fg = "#e06c75"
   },
+
+  -- Markdown and Neorg
+  ["@text.emphasis"] = {
+    italic = true
+  },
+
+  ["@text.strong"] = {
+    fg = "#ffffff",
+    bold = true
+  }
 }
 
 ---@type HLTable
@@ -225,7 +240,7 @@ M.add = {
 
   DapStoppedText = {
     fg = "green"
-  }
+  },
 }
 
 return M

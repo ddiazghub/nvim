@@ -7,5 +7,5 @@
 -- })
 
 require("custom.set")
-require("custom.startup")
-require("custom.lsp-default")
+require("custom.autocommands")
+require("custom.commands")

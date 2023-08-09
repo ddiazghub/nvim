@@ -1,20 +1,26 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
+local on_attach = require("custom.lsp-defaults").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local schemas = require("schemastore")
 
--- Diagnostics will be kept in insert mode
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    update_in_insert = true,
-  }
-)
+-- Sort diagnostics by severity
+vim.diagnostic.config {
+  update_in_insert = true,
+  underline = true,
+  severity_sort = true
+}
+
+-- Hover doc popup
+local pop_opts = { border = "rounded" }
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
   "cssls",
   "clangd",
   "pyright",
+  "taplo"
 }
 
 for _, lsp in ipairs(servers) do
@@ -107,3 +113,25 @@ lspconfig.lua_ls.setup {
     }
   }
 }
+
+-- Set diagnostic highlight groups and colors:
+-- Error
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", {
+  undercurl = true,
+  bg = "#660000",
+  sp = "Red"
+})
+
+-- Warning
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", {
+  undercurl = true,
+  bg = "#40400b",
+  sp = "Orange"
+})
+
+-- Hint
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", {
+  undercurl = true,
+  bg = "#311f33",
+  sp = "#c58cec"
+})

@@ -38,24 +38,5 @@ vim.g.python3_host_prog = os.getenv("LOCALAPPDATA") .. "\\Programs\\Python\\Pyth
 -- Autosave
 vim.opt.autowriteall = true
 
-local function save()
-  if vim.api.nvim_buf_get_option(0, "modified") and vim.bo.buftype ~= "prompt" then
-    vim.cmd[[w]]
-  end
-end
-
--- local autosave = vim.api.nvim_create_augroup("Autosave", {})
--- 
--- -- Autosave on InsertEnter
--- vim.api.nvim_create_autocmd("InsertEnter", {
---   callback = save,
---   group = autosave,
---   nested = true
--- })
--- 
--- -- Autosave on InsertLeave
--- vim.api.nvim_create_autocmd("InsertLeave", {
---   callback = save,
---   group = autosave,
---   nested = true
--- })
+-- Font
+vim.opt.guifont = "CaskaydiaCove Nerd Font"

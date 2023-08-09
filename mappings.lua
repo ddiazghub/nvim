@@ -15,10 +15,16 @@ M.disabled = {
   }
 }
 
--- Custom mappings
-M.custom = {
+-- Help
+M.help = {
   n = {
-    ["<leader>v"] = { "<C-v>", "Enter visual block mode" },
+    ["<leader>sh"] = { "<Cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
+  }
+}
+
+-- Mappings for spawning terminals
+M.terminal = {
+  n = {
     ["<leader>th"] = {
       function()
         require("nvterm.terminal").new("horizontal")
@@ -29,10 +35,18 @@ M.custom = {
       function()
         require("nvterm.terminal").new("vertical")
       end,
-      "New horizontal term",
+      "New vertical term",
     },
+  }
+}
+
+-- Actions
+M.actions = {
+  n = {
+    ["<leader>v"] = { "<C-v>", "Enter visual block mode" },
     ["<C-z>"] = { "u", "Undo" },
     ["<C-y>"] = { "<C-r>", "Redo" },
+    ["<C-C>"] = { "<Cmd> %y <CR>", "Copy all lines in buffer" },
     ["<C-d>"] = { "<C-d>zz", "Half page jump down" },
     ["<C-u>"] = { "<C-u>zz", "Half page jump up" },
     ["<C-f>"] = { "<C-f>zz", "Page jump down" },
@@ -50,9 +64,8 @@ M.custom = {
     ["<C-Up>"] = { "10k", "Fast scroll up" },
     ["<C-j>"] = { "10j", "Fast scroll down" },
     ["<C-Down>"] = { "10j", "Fast scroll down" },
-    ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code action" },
-    ["<leader>ld"] = { vim.lsp.buf.type_definition, "LSP type definition" },
-    ["<leader>sh"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
+    ["<C-h>"] = { "0", "Start of line" },
+    ["<C-l>"] = { "$", "End of line" },
     ["<leader>jc"] = {
       function()
         local ok, start = require("indent_blankline.utils").get_current_context(
@@ -67,32 +80,31 @@ M.custom = {
       end,
       "Jump to current context",
     },
-    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>fd"] = {
-      function()
-        vim.diagnostic.open_float { border = "rounded" }
-      end,
-      "Floating diagnostic"
-    },
   },
   i = {
     ["<C-z>"] = { "<C-o>u", "Undo" },
-    ["<C-y>"] = { "<C-o><C-r>", "Redo" }
+    ["<C-y>"] = { "<C-o><C-r>", "Redo" },
+    ["<C-v>"] = { "<Esc>pi", "Paste" },
   },
   v = {
     [">"] = { ">gv", "Shift text right" },
     ["<"] = { "<gv", "Shift text left" },
     ["<Tab>"] = { ">gv", "Shift text right" },
     ["<S-Tab>"] = { "<gv", "Shift text left" },
-    ["J"] = { ":m '>+1<CR>gv=gv", "Move selected block up" },
-    ["<S-Down>"] = { ":m '>+1<CR>gv=gv", "Move selected block down" },
-    ["K"] = { ":m '<-2<CR>gv=gv", "Move selected block down" },
-    ["<S-Up>"] = { ":m '<-2<CR>gv=gv", "Move selected block up" },
     ["<leader>c"] = { [["_c]], "Change without yanking content" },
     ["<leader>d"] = { [["_d]], "Delete without yanking content" },
+    ["<C-c>"] = { "y", "Copy selection" },
   },
   x = {
-    ["p"] = { [["_dP]], "Paste copied content and replace selection" },
+    p = { [["_dP]], "Paste copied content and replace selection" },
+    ["C-v"] = { [["_dP]], "Paste copied content and replace selection" },
+  }
+}
+
+-- Git related mappings
+M.git = {
+  n = {
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
   }
 }
 
@@ -149,6 +161,18 @@ M.dap = {
       end,
       "Set conditional breakpoint"
     },
+    ["<leader>dh"] = {
+      function()
+        require("dapui").toggle({ layout = 1, reset = true })
+      end,
+      "Toggle variables, scopes, stack frames and watches"
+    },
+    ["<leader>dj"] = {
+      function()
+        require("dapui").toggle({ layout = 2, reset = true })
+      end,
+      "Toggle Dap REPL and console"
+    }
   }
 }
 

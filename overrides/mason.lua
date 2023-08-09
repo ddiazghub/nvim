@@ -8,26 +8,27 @@ return {
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
-    "rome",
-    "prettier",
+    "deno",
+    "prettierd",
+    "eslint_d",
 
     -- c/cpp stuff
     "clangd",
     "clang-format",
 
     -- rust stuff
-    "rust-analyzer",
-    "rustfmt",
     "codelldb",
+    "taplo",
 
     -- python stuff
     "pyright",
     "mypy",
     "ruff",
     "black",
-    "debugpy"
+    "debugpy",
 
     -- other
-
+    "json-lsp",
+    "yaml-language-server",
   },
 }
