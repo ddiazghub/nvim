@@ -41,6 +41,7 @@ require("flutter-tools").setup {
     on_attach = on_attach,
     settings = {
       completeFunctionCalls = true,
+      lineLength = 120,
       analysisExcludedFolders = {
         vim.fn.expand '$HOME/.pub-cache',
         -- vim.fn.expand '$HOME/fvm/versions', -- flutter-tools should automatically exclude your SDK.
