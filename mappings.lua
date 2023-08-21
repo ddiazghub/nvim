@@ -94,10 +94,14 @@ M.actions = {
     ["<leader>c"] = { [["_c]], "Change without yanking content" },
     ["<leader>d"] = { [["_d]], "Delete without yanking content" },
     ["<C-c>"] = { "y", "Copy selection" },
+    ["<C-k>"] = { "10k", "Fast scroll up" },
+    ["<C-j>"] = { "10j", "Fast scroll down" },
   },
   x = {
     p = { [["_dP]], "Paste copied content and replace selection" },
     ["C-v"] = { [["_dP]], "Paste copied content and replace selection" },
+    ["<C-k>"] = { "10k", "Fast scroll up" },
+    ["<C-j>"] = { "10j", "Fast scroll down" },
   }
 }
 

@@ -22,7 +22,6 @@ return {
 
     -- python stuff
     "pyright",
-    "mypy",
     "ruff",
     "black",
     "debugpy",

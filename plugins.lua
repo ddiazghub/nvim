@@ -78,13 +78,13 @@ local plugins = {
   },
 
   -- Discord presence
-  -- {
-  --   "andweeb/presence.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require("custom.configs.presence")
-  --   end
-  -- },
+  {
+    "andweeb/presence.nvim",
+    lazy = false,
+    config = function()
+      require("custom.configs.presence")
+    end
+  },
 
   -- Dressing
   {

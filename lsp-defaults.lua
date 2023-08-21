@@ -28,7 +28,7 @@ local keymaps = function(bufnr)
     },
     ["<leader>lr"] = {
       function()
-        require("nvchad_ui.renamer").open()
+        require("nvchad.renamer").open()
       end,
       "LSP rename"
     },
