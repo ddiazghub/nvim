@@ -1,13 +1,19 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 
-local keymaps = function(bufnr)
+local keymaps = function(client, bufnr)
+  local hover = vim.lsp.buf.hover
+
+  if client.name == "csharp_ls" or client.name == "omnisharp" then
+    hover = "<Cmd>Lspsaga hover_doc<CR>"
+  end
+
   local mappings = {
-    name = "lspconfig",
-    K = { function() vim.lsp.buf.hover() end, "LSP Hover" },
-    gd = { vim.lsp.buf.definition, "LSP goto definition" },
-    gt = { vim.lsp.buf.type_definition, "LSP goto type definition" },
-    gi = { "<Cmd>Lspsaga finder imp<CR>", "LSP goto implementation" },
-    gr = { "<Cmd>Lspsaga finder ref<CR>", "LSP goto reference" },
+    name = "lsp",
+    K = { hover, "LSP Hover" },
+    gd = { vim.lsp.buf.definition, "lsp goto definition" },
+    gt = { vim.lsp.buf.type_definition, "lsp goto type definition" },
+    gi = {  "<Cmd>Lspsaga finder imp<CR>", "LSP goto implementation" },
+    gr = { "<Cmd>Lspsaga finder ref<CR>", "LSP goto references" },
     ["<leader>ld"] = { "<Cmd>Lspsaga peek_definition<CR>", "LSP peek definition" },
     ["<leader>lt"] = { "<Cmd>Lspsaga peek_type_definition<CR>", "LSP peek type definition" },
     ["<leader>li"] = { "<Cmd>Lspsaga finder imp<CR>", "LSP goto implementation" },
@@ -66,11 +72,21 @@ local keymaps = function(bufnr)
   local wk = require("which-key")
 
   wk.register(mappings, { buffer = bufnr })
+
+  local visual = {
+    name = "lsp",
+    ["<leader>la"] = { "<Cmd>Lspsaga code_action<CR>", "LSP range code actions" },
+  }
+
+  wk.register(visual, { mode = "v", buffer = bufnr })
 end
 
 local basic_attach = function(client, bufnr)
-  keymaps(bufnr)
-  require("lsp-inlayhints").on_attach(client, bufnr)
+  keymaps(client, bufnr)
+
+  if client.server_capabilities.inlayHintProvider or vim.bo.ft == "dart" or vim.bo.ft == "cs" then
+    vim.lsp.inlay_hint(bufnr, true)
+  end
 end
 
 local lsp_attach = function(client, bufnr)
@@ -81,5 +97,5 @@ end
 return {
   keymaps = keymaps,
   on_attach = lsp_attach,
-  basic_attach = basic_attach
+  basic_attach = basic_attach,
 }

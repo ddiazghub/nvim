@@ -1,13 +1,14 @@
 return {
   ensure_installed = {
-    -- lua stuff
+    -- neovim stuff
     "lua-language-server",
+    "vim-language-server",
     "stylua",
 
     -- web dev stuff
     "css-lsp",
     "html-lsp",
-    "typescript-language-server",
+    "vtsls",
     "deno",
     "prettierd",
     "eslint_d",
@@ -29,5 +30,8 @@ return {
     -- other
     "json-lsp",
     "yaml-language-server",
+
+    -- c#
+    "csharpier",
   },
 }

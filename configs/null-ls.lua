@@ -11,12 +11,16 @@ local sources = {
   b.formatting.prettierd.with { filetypes = { "html", "htmldjango", "css", "yaml" } },
   b.formatting.deno_fmt.with { filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json", "jsonc", "markdown" } },
   b.diagnostics.eslint_d.with {},
+  b.code_actions.eslint_d.with {},
 
   -- Lua
   b.formatting.stylua,
 
   -- c - cpp
-  b.formatting.clang_format,
+  b.formatting.clang_format.with { filetypes = { "c", "cpp" } },
+
+  -- c#
+  b.formatting.csharpier,
 
   -- python
   b.diagnostics.mypy.with({

@@ -14,9 +14,10 @@ vim.opt.smartindent = true
 -- Wrap is dumb
 vim.opt.wrap = false
 
--- Swap files are annoying
+-- Swap and SHADA files are annoying
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.shadafile = "NONE"
 
 -- Search
 vim.opt.hlsearch = false

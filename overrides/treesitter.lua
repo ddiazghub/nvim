@@ -19,7 +19,9 @@ return {
     "json",
     "jsonc",
     "yaml",
-    "dart"
+    "dart",
+    "http",
+    "c_sharp",
   },
   indent = {
     enable = true,

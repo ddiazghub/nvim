@@ -12,7 +12,10 @@ return {
       entry_filter = function(entry, _)
         return cmp.lsp.CompletionItemKind.Text ~= entry:get_kind()
       end
-    }
+    },
+    { name = "path" },
+    { name = "luasnip" },
+    { name = "nvim_lua" },
   },
   mapping = cmp.mapping.preset.insert {
     ["<C-n>"] = cmp.mapping.complete(),

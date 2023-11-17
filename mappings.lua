@@ -4,14 +4,14 @@ local M = {}
 -- Disabled
 M.disabled = {
   n = {
-      ["<leader>h"] = "",
-      ["<leader>v"] = "",
-      ["<leader>b"] = "",
-      ["<leader>ca"] = "",
-      ["<leader>ch"] = "",
-      ["<leader>cc"] = "",
-      ["<leader>cm"] = "",
-      ["<leader>f"] = "",
+    ["<leader>h"] = "",
+    ["<leader>v"] = "",
+    ["<leader>b"] = "",
+    ["<leader>ca"] = "",
+    ["<leader>ch"] = "",
+    ["<leader>cc"] = "",
+    ["<leader>cm"] = "",
+    ["<leader>f"] = "",
   }
 }
 
@@ -20,6 +20,37 @@ M.help = {
   n = {
     ["<leader>sh"] = { "<Cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
   }
+}
+
+-- LSP Mappings
+M.lsp = {
+  n = {
+    K = { vim.lsp.buf.hover, "LSP Hover" },
+    gd = { vim.lsp.buf.definition, "lsp goto definition" },
+    gt = { vim.lsp.buf.type_definition, "lsp goto type definition" },
+    gi = { vim.lsp.buf.implementation, "LSP goto implementation" },
+    gr = { vim.lsp.buf.references, "LSP goto references" },
+    gD = { vim.lsp.buf.declaration, "LSP goto declaration" },
+    ["<leader>ld"] = { vim.lsp.buf.definition, "LSP peek definition" },
+    ["<leader>lt"] = { vim.lsp.buf.type_definition, "LSP peek type definition" },
+    ["<leader>li"] = { vim.lsp.buf.implementation, "LSP goto implementation" },
+    ["<leader>la"] = { vim.lsp.buf.code_action, "LSP code actions" },
+    ["[g"] = { vim.diagnostic.goto_prev, "LSP go to previous diagnostic" },
+    ["]g"] = { vim.diagnostic.goto_next, "LSP go to next diagnostic" },
+    ["<leader>lr"] = { vim.lsp.buf.rename, "LSP rename" },
+    ["<leader>fd"] = {
+      function()
+        vim.diagnostic.open_float { border = "rounded" }
+      end,
+      "LSP open floating diagnostic"
+    },
+    ["<leader>fm"] = {
+      function()
+        vim.lsp.buf.format { async = true}
+      end,
+      "LSP format"
+    },
+  },
 }
 
 -- Mappings for spawning terminals
@@ -202,6 +233,12 @@ M.flutter_tools = {
       end,
       "Flutter commands"
     }
+  }
+}
+
+M.rest_nvim = {
+  n = {
+    ["<leader>rs"] = { "<Plug>RestNvim", "Run http request under cursor" },
   }
 }
 

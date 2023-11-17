@@ -220,6 +220,11 @@ M.override = {
   ["@text.strong"] = {
     fg = "#ffffff",
     bold = true
+  },
+
+  NonText = {
+    bg = "#25221c",
+    fg = "#b3904b"
   }
 }
 
