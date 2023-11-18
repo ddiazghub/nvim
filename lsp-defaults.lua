@@ -85,7 +85,7 @@ local basic_attach = function(client, bufnr)
   keymaps(client, bufnr)
 
   if client.server_capabilities.inlayHintProvider or vim.bo.ft == "dart" or vim.bo.ft == "cs" then
-    vim.lsp.inlay_hint(bufnr, true)
+    vim.lsp.inlay_hint.enable(bufnr, true)
   end
 end
 
