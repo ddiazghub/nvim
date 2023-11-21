@@ -32,10 +32,6 @@ vim.opt.updatetime = 50
 -- No idea
 vim.opt.colorcolumn = "80"
 
--- Python provider
-vim.g.loaded_python3_provider = nil
-vim.g.python3_host_prog = os.getenv("LOCALAPPDATA") .. "\\Programs\\Python\\Python311\\python.exe"
-
 -- Autosave
 vim.opt.autowriteall = true
 

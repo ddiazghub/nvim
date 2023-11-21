@@ -18,7 +18,7 @@ local pop_opts = { border = "rounded" }
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
 
--- if you just want default config for the servers then put them in a table
+-- If you just want default config for the servers then put them in a table
 local servers = {
   "cssls",
   "clangd",
@@ -28,6 +28,7 @@ local servers = {
   "vimls",
 }
 
+-- Set up default configurations
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -35,6 +36,9 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- CUSTOM CONFIGS
+
+-- C# Setup
 local csharp_attach = function(client, bufnr)
   on_attach(client, bufnr)
 
@@ -65,6 +69,13 @@ lspconfig.csharp_ls.setup {
       )
   end,
   single_file_support = true,
+}
+
+-- Bash setup
+lspconfig.bashls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "sh", "zsh" },
 }
 
 -- JSON setup

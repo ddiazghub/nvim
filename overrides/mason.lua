@@ -33,5 +33,8 @@ return {
 
     -- c#
     "csharpier",
+
+    -- bash
+    "bash-language-server",
   },
 }
