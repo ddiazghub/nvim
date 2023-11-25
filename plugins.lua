@@ -6,7 +6,7 @@ local plugins = {
     dependencies = {
       -- format & linting
       {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         config = function()
           require "custom.configs.null-ls"
         end,
@@ -26,7 +26,7 @@ local plugins = {
     event = "BufReadPost",
     lazy = false,
     config = function()
-      require("telescope").load_extension("fzf")
+      require("telescope").load_extension "fzf"
     end,
   },
 
@@ -95,25 +95,28 @@ local plugins = {
     end,
   },
 
-  -- Neorg
+  -- Funny name SQL plugin
   {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    ft = "norg",
-    config = function()
-      require "custom.configs.neorg"
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      {
+        "kristijanhusak/vim-dadbod-completion",
+        ft = { "sql", "mysql", "plsql" },
+        lazy = true,
+      },
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-
-  -- Discord presence
-  -- {
-  --   "andweeb/presence.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require("custom.configs.presence")
-  --   end
-  -- },
 
   -- Dressing
   {

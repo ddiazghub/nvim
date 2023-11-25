@@ -58,8 +58,6 @@ lspconfig.csharp_ls.setup {
   capabilities = capabilities,
   filetypes = { "cs" },
   root_dir = function(startpath)
-    print("file: " .. vim.api.nvim_buf_get_name(0))
-    print("dir: " .. require("lspconfig.util").path.dirname(vim.api.nvim_buf_get_name(0)))
     return lspconfig.util.root_pattern "*.sln"(startpath)
       or lspconfig.util.root_pattern "*.csproj"(startpath)
       or lspconfig.util.root_pattern "*.fsproj"(startpath)

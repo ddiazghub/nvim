@@ -11,13 +11,12 @@ vim.opt.expandtab = true
 -- Indent
 vim.opt.smartindent = true
 
--- Wrap is dumb
+-- Wrap looks bad
 vim.opt.wrap = false
 
--- Swap and SHADA files are annoying
+-- Swap files are annoying
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.shadafile = "NONE"
 
 -- Search
 vim.opt.hlsearch = false

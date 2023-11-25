@@ -92,6 +92,7 @@ end
 local lsp_attach = function(client, bufnr)
   on_attach(client, bufnr)
   basic_attach(client, bufnr)
+  vim.lsp.set_log_level("DEBUG")
 end
 
 return {
