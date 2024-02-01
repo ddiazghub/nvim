@@ -26,6 +26,7 @@ local servers = {
   "taplo",
   "omnisharp",
   "vimls",
+  "marksman",
 }
 
 -- Set up default configurations

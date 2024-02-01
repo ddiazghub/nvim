@@ -2,9 +2,9 @@ local cmp = require "cmp"
 
 return {
   -- Autocompletion in Dap UI
-  enabled = function()
-    return vim.opt.buftype ~= "prompt" or require("cmp_dap").is_dap_buffer()
-  end,
+  -- enabled = function()
+  --   return vim.opt.buftype ~= "prompt" or require("cmp_dap").is_dap_buffer()
+  -- end,
   -- Dont suggest Text from lsp
   sources = cmp.config.sources {
     {
