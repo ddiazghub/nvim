@@ -145,29 +145,29 @@ local plugins = {
   },
 
   -- Rust tools
-  {
-    "simrat39/rust-tools.nvim",
-    ft = "rust",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-    config = function()
-      require "custom.configs.rust-tools"
-    end,
-  },
+  -- {
+  --   "simrat39/rust-tools.nvim",
+  --   ft = "rust",
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --   },
+  --   config = function()
+  --     require "custom.configs.rust-tools"
+  --   end,
+  -- },
 
   -- Flutter tools
-  {
-    "akinsho/flutter-tools.nvim",
-    ft = "dart",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim", -- optional for vim.ui.select
-    },
-    config = function()
-      require "custom.configs.flutter-tools"
-    end,
-  },
+  -- {
+  --   "akinsho/flutter-tools.nvim",
+  --   ft = "dart",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "stevearc/dressing.nvim", -- optional for vim.ui.select
+  --   },
+  --   config = function()
+  --     require "custom.configs.flutter-tools"
+  --   end,
+  -- },
 
   -- Automatic tag closure
   {
@@ -208,85 +208,75 @@ local plugins = {
   },
 
   -- Debugging adapter protocol
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require "custom.configs.dap"
-      require("core.utils").load_mappings "dap"
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   config = function()
+  --     require "custom.configs.dap"
+  --     require("core.utils").load_mappings "dap"
+  --   end,
+  -- },
 
   -- Debugging ui
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-    config = function()
-      require "custom.configs.dap-ui"
-    end,
-  },
+  -- {
+  --   "rcarriga/nvim-dap-ui",
+  --   dependencies = {
+  --     "mfussenegger/nvim-dap",
+  --   },
+  --   config = function()
+  --     require "custom.configs.dap-ui"
+  --   end,
+  -- },
 
   -- Python debugging
-  {
-    "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
-    },
-    config = function(_, _)
-      local path = os.getenv "LOCALAPPDATA" .. "\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python.exe"
-      require("dap-python").setup(path)
-      require("core.utils").load_mappings "dap_python"
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap-python",
+  --   ft = "python",
+  --   dependencies = {
+  --     "mfussenegger/nvim-dap",
+  --     "rcarriga/nvim-dap-ui",
+  --   },
+  --   config = function(_, _)
+  --     local path = os.getenv "LOCALAPPDATA" .. "\\nvim-data\\mason\\packages\\debugpy\\venv\\Scripts\\python.exe"
+  --     require("dap-python").setup(path)
+  --     require("core.utils").load_mappings "dap_python"
+  --   end,
+  -- },
 
   -- Debugging completion
-  {
-    "rcarriga/cmp-dap",
-    dependencies = "hrsh7th/nvim-cmp",
-    config = function()
-      require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-        sources = { { name = "dap" } },
-      })
-    end,
-  },
+  -- {
+  --   "rcarriga/cmp-dap",
+  --   dependencies = "hrsh7th/nvim-cmp",
+  --   config = function()
+  --     require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  --       sources = { { name = "dap" } },
+  --     })
+  --   end,
+  -- },
 
   -- Debugging virtual text
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    dependencies = "mfussenegger/nvim-dap",
-    config = function()
-      require("nvim-dap-virtual-text").setup {}
-    end,
-  },
+  -- {
+  --   "theHamsta/nvim-dap-virtual-text",
+  --   dependencies = "mfussenegger/nvim-dap",
+  --   config = function()
+  --     require("nvim-dap-virtual-text").setup {}
+  --   end,
+  -- },
 
-  -- Markdown preview
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-
-  -- Firenvim browser extension (I'm already too far deep down the rabbit hole)
-  {
-    "glacambre/firenvim",
-    -- Lazy load firenvim
-    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
-    lazy = false,
-    cond = not not vim.g.started_by_firenvim,
-    build = function()
-      require("lazy").load { plugins = "firenvim", wait = true }
-      vim.fn["firenvim#install"](0)
-    end,
-    config = function()
-      require "custom.configs.firenvim"
-    end,
-  },
+  -- Firenvim browser extension
+  -- {
+  --   "glacambre/firenvim",
+  --   -- Lazy load firenvim
+  --   -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+  --   lazy = false,
+  --   cond = not not vim.g.started_by_firenvim,
+  --   build = function()
+  --     require("lazy").load { plugins = "firenvim", wait = true }
+  --     vim.fn["firenvim#install"](0)
+  --   end,
+  --   config = function()
+  --     require "custom.configs.firenvim"
+  --   end,
+  -- },
 
   -- To make a plugin not be loaded
   -- {
